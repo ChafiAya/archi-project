@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block body %}
+    <h1>Calendrier</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ calendrier.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ calendrier.date ? calendrier.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HD</th>
+                <td>{{ calendrier.HD }}</td>
+            </tr>
+            <tr>
+                <th>HF</th>
+                <td>{{ calendrier.HF }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ calendrier.duree }}</td>
+            </tr>
+            <tr>
+                <th>Salle</th>
+                <td>{{ calendrier.salle ? calendrier.salle.nomS : 'No Salle assigned' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_calendrier_index') }}">back to list</a>
+    <a href="{{ path('app_calendrier_edit', {'id': calendrier.id}) }}">edit</a>
+
+    {{ include('calendrier/_delete_form.html.twig') }}
+{% endblock %}
